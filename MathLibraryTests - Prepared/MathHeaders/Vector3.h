@@ -13,6 +13,7 @@ namespace MathClasses
         std::string ToString() const;
 
         float Magnitude() const;
+        float SqrMagnitude() const;
         float Dot(Vector3 o) const;
         Vector3 Normalised() const;
         void Normalise();
@@ -22,6 +23,7 @@ namespace MathClasses
         friend Vector3 operator-(Vector3 a, Vector3 b);
         friend Vector3 operator*(Vector3 a, float b);
         friend Vector3 operator*(float a, Vector3 b);
+        float operator[](int index);
 
         friend bool operator==(Vector3 a, Vector3 b);
         friend bool operator!=(Vector3 a, Vector3 b);
