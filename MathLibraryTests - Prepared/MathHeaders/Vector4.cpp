@@ -49,11 +49,20 @@ namespace MathClasses
 	void MathClasses::Vector4::Normalise()
 	{
 		float m = Magnitude();
-
-		x /= m;
-		y /= m;
-		z /= m;
-		w /= m;
+		if (m != 0)
+		{
+			x /= m;
+			y /= m;
+			z /= m;
+			w /= m;
+		}
+		else
+		{
+			x = 0;
+			y = 0;
+			z = 0;
+			w = 0;
+		}
 	}
 
 	Vector4 MathClasses::Vector4::Cross(Vector4 o) const

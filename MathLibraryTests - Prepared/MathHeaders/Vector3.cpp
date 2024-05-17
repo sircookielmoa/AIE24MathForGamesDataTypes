@@ -46,10 +46,18 @@ namespace MathClasses
 	void MathClasses::Vector3::Normalise()
 	{
 		float m = Magnitude();
-
-		x /= m;
-		y /= m;
-		z /= m;
+		if (m != 0)
+		{
+			x /= m;
+			y /= m;
+			z /= m;
+		}
+		else
+		{
+			x = 0;
+			y = 0;
+			z = 0;
+		}
 	}
 
 	Vector3 MathClasses::Vector3::Cross(Vector3 o) const

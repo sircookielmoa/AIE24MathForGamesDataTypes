@@ -1,13 +1,22 @@
 #include "Matrix3.h"
+#include "Vector3.h"
+//hello
 
 namespace MathClasses
 {
 	MathClasses::Matrix3::Matrix3()
 	{
+		m1 = m2 = m3 =
+		m4 = m5 = m6 =
+		m7 = m8 = m9 = 0.0f;
 	}
 
 	MathClasses::Matrix3::Matrix3(float a1, float a2, float a3, float a4, float a5, float a6, float a7, float a8, float a9)
 	{
+		a1 = a4 = a7 =
+		a2 = a5 = a8 =
+		a3 = a6 = a9 = 0.0f;
+
 	}
 
 	MathClasses::Matrix3::Matrix3(float* v)
