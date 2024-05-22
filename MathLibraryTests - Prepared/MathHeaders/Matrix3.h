@@ -28,6 +28,8 @@ namespace MathClasses
 
         Matrix3 Transposed();
 
+        float Matrix3::operator[](int index);
+
         friend Matrix3 operator*(Matrix3 a, Matrix3 b);
         friend struct Vector3 operator*(Matrix3 a, struct Vector3 b);
 
