@@ -31,6 +31,8 @@ namespace MathClasses
 
         Matrix4 Transposed();
 
+        float Matrix4::operator[](int index);
+
         friend Matrix4 operator*(Matrix4 a, Matrix4 b);
         friend struct Vector4 operator*(Matrix4 a, struct Vector4 b);
 

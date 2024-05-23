@@ -162,34 +162,123 @@ namespace MathClasses
 	Matrix4 MathClasses::Matrix4::MakeScale(Vector3 s)
 	{
 		return MakeScale(s.x, s.y, s.z);
-	}
+	};
 
 	Matrix4 MathClasses::Matrix4::Transposed()
 	{
 		return Matrix4(
-			m1, m5, m9, m13, 
-			m2, m6, m10, m14, 
-			m3, m7, m11, m15, 
+			m1, m5, m9, m13,
+			m2, m6, m10, m14,
+			m3, m7, m11, m15,
 			m4, m8, m12, m16);
 	}
 
-	Matrix4 MathClasses::operator*(Matrix4 a, Matrix4 rhs)
+	float Matrix4::operator[](int index)
 	{
-		return false;
+		switch (index) {
+
+		default:
+		case 0:
+			return m1;
+			break;
+		case 1:
+			return m2;
+			break;
+		case 2:
+			return m3;
+			break;
+		case 3:
+			return m4;
+			break;
+		case 4:
+			return m5;
+			break;
+		case 5:
+			return m6;
+			break;
+		case 6:
+			return m7;
+			break;
+		case 7:
+			return m8;
+			break;
+		case 8:
+			return m9;
+			break;
+		case 9:
+			return m10;
+			break;
+		case 10:
+			return m11;
+			break;
+		case 11:
+			return m12;
+			break;
+		case 12:
+			return m13;
+			break;
+		case 13:
+			return m14;
+			break;
+		case 14:
+			return m15;
+			break;
+		case 15:
+			return m16;
+			break;
+
+		}
 	}
 
-	Vector4 MathClasses::operator*(Matrix4 a, Vector4 b)
-	{
-		return Vector4();
-	}
+		Matrix4 MathClasses::operator*(Matrix4 a, Matrix4 b)
+		{
+			return Matrix4(
+				a.m1 * b.m1 + a.m5 * b.m2 + a.m9 * b.m3 + a.m13 * b.m4,
+				a.m2 * b.m1 + a.m6 * b.m2 + a.m10 * b.m3 + a.m14 * b.m4,
+				a.m3 * b.m1 + a.m7 * b.m2 + a.m11 * b.m3 + a.m15 * b.m4,
+				a.m4 * b.m1 + a.m8 * b.m2 + a.m12 * b.m3 + a.m16 * b.m4,
 
-	bool MathClasses::operator==(Matrix4 a, Matrix4 b)
-	{
-		return false;
-	}
+				a.m1 * b.m5 + a.m5 * b.m6 + a.m9 * b.m7 + a.m13 * b.m8,
+				a.m2 * b.m5 + a.m6 * b.m6 + a.m10 * b.m7 + a.m14 * b.m8,
+				a.m3 * b.m5 + a.m7 * b.m6 + a.m11 * b.m7 + a.m15 * b.m8,
+				a.m4 * b.m5 + a.m8 * b.m6 + a.m12 * b.m7 + a.m16 * b.m8,
 
-	bool MathClasses::operator!=(Matrix4 a, Matrix4 b)
-	{
-		return false;
-	}
+				a.m1 * b.m9 + a.m5 * b.m10 + a.m9 * b.m11 + a.m13 * b.m12,
+				a.m2 * b.m9 + a.m6 * b.m10 + a.m10 * b.m11 + a.m14 * b.m12,
+				a.m3 * b.m9 + a.m7 * b.m10 + a.m11 * b.m11 + a.m15 * b.m12,
+				a.m4 * b.m9 + a.m8 * b.m10 + a.m12 * b.m11 + a.m16 * b.m12,
+
+				a.m1 * b.m13 + a.m5 * b.m14 + a.m9 * b.m15 + a.m13 * b.m16,
+				a.m2 * b.m13 + a.m6 * b.m14 + a.m10 * b.m15 + a.m14 * b.m16,
+				a.m3 * b.m13 + a.m7 * b.m14 + a.m11 * b.m15 + a.m15 * b.m16,
+				a.m4 * b.m13 + a.m8 * b.m14 + a.m12 * b.m15 + a.m16 * b.m16);
+		}
+
+		Vector4 MathClasses::operator*(Matrix4 a, Vector4 b)
+		{
+			return Vector4(
+				Vector4(a.m1, a.m5, a.m9, a.m13).Dot(b),
+				Vector4(a.m2, a.m6, a.m10, a.m14).Dot(b),
+				Vector4(a.m3, a.m7, a.m11, a.m15).Dot(b),
+				Vector4(a.m4, a.m8, a.m12, a.m16).Dot(b));
+		}
+
+		bool MathClasses::operator==(Matrix4 a, Matrix4 b)
+		{
+			for (int i = 0; i < 4; i++) {
+				if (fabsf(a[i] - b[i]) <= .0001) {
+					continue;
+				}
+				else {
+					return false;
+				}
+
+			}
+			return true;
+		}
+
+		bool MathClasses::operator!=(Matrix4 a, Matrix4 b)
+		{
+			return !(a == b);
+		}
 }
