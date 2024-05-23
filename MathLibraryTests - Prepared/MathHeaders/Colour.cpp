@@ -31,12 +31,17 @@ namespace MathClasses
 
 	Byte MathClasses::Colour::GetBlue() const
 	{
-		return (colour >> 8) & 0xff;
+		return (colour >> 8) &0xff;
 	}
 
 	Byte MathClasses::Colour::GetAlpha() const
 	{
 		return colour &0xff;
+	}
+
+	void Colour::RedToGreen()
+	{
+		SetGreen(GetRed());
 	}
 
 	void MathClasses::Colour::SetRed(Byte v)
@@ -71,4 +76,6 @@ namespace MathClasses
 	{
 		return !(a == b);
 	}
+
+
 }

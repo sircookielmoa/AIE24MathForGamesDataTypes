@@ -20,6 +20,8 @@ namespace MathClasses
         Byte GetBlue() const;
         Byte GetAlpha() const;
 
+        void RedToGreen();
+
         void SetRed(Byte v);
         void SetGreen(Byte v);
         void SetBlue(Byte v);
